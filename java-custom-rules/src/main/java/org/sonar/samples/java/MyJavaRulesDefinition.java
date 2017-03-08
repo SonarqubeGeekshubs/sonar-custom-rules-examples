@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
 import org.sonar.api.rule.RuleStatus;
 import org.sonar.api.server.debt.DebtRemediationFunction;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.plugins.java.Java;
 import org.sonar.squidbridge.annotations.AnnotationBasedRulesDefinition;
 
 import com.google.common.base.Charsets;
@@ -43,15 +42,17 @@ public class MyJavaRulesDefinition implements RulesDefinition {
 
   public static final String REPOSITORY_KEY = "mycompany-java";
 
+  private static final String LANGUAGE_KEY = "java";
+
   private final Gson gson = new Gson();
 
   @Override
   public void define(Context context) {
     NewRepository repository = context
-      .createRepository(REPOSITORY_KEY, Java.KEY)
+      .createRepository(REPOSITORY_KEY, LANGUAGE_KEY)
       .setName("MyCompany Custom Repository");
 
-    new AnnotationBasedRulesDefinition(repository, Java.KEY)
+    new AnnotationBasedRulesDefinition(repository, LANGUAGE_KEY)
       .addRuleClasses(/* don't fail if no SQALE annotations */ false, RulesList.getChecks());
 
     for (NewRule rule : repository.rules()) {

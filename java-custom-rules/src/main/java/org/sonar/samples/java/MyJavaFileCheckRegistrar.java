@@ -23,14 +23,7 @@ import java.util.Arrays;
 
 import org.sonar.plugins.java.api.CheckRegistrar;
 import org.sonar.plugins.java.api.JavaCheck;
-import org.sonar.samples.java.checks.AvoidAnnotationRule;
-import org.sonar.samples.java.checks.AvoidBrandInMethodNamesRule;
-import org.sonar.samples.java.checks.AvoidMethodDeclarationRule;
-import org.sonar.samples.java.checks.AvoidSuperClassRule;
-import org.sonar.samples.java.checks.AvoidUnmodifiableListRule;
-import org.sonar.samples.java.checks.MyCustomSubscriptionRule;
-import org.sonar.samples.java.checks.SecurityAnnotationMandatoryRule;
-import org.sonar.samples.java.checks.SpringControllerRequestMappingEntityRule;
+import org.sonar.samples.java.checks.*;
 import org.sonarsource.api.sonarlint.SonarLintSide;
 
 /**
@@ -63,7 +56,8 @@ public class MyJavaFileCheckRegistrar implements CheckRegistrar {
       AvoidSuperClassRule.class,
       AvoidUnmodifiableListRule.class,
       MyCustomSubscriptionRule.class,
-      SecurityAnnotationMandatoryRule.class
+      SecurityAnnotationMandatoryRule.class,
+      AvoidSwitchCheck.class
     };
   }
 
