@@ -1,0 +1,14 @@
+{
+  "title": "\"switch\" statements are evil",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "error",
+    "apocalypse",
+    "bug"
+  ],
+  "defaultSeverity": "Blocker"
+}
