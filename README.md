@@ -1,4 +1,4 @@
-Sonar Custom Rules Examples [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-rules-examples.svg?branch=master)](https://travis-ci.org/SonarSource/sonar-custom-rules-examples)
+Sonar Custom Rules Examples [![Build Status](https://travis-ci.org/SonarqubeGeekshubs/sonar-custom-rules-examples.svg?branch=add-new-rules)](https://travis-ci.org/SonarqubeGeekshubs/sonar-custom-rules-examples)
 ==========
 
 This repository contains project examples you can directly clone to bootstrap your own project to write custom rules for COBOL, Java, JavaScript, PHP, and RPG.

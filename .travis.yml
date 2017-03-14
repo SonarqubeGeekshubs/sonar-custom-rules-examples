@@ -1,21 +1,25 @@
 language: java
-sudo: false
-install: true
-jdk: oraclejdk8
-script: ./travis.sh
 
-env:
-  global:
-    - secure: "KQL//XkaY310Jt4efPl0H0K4BGoRqWlODWMJU9zLA32r0DK5X+bI6SBfj4IbBiG8HAXmz4uZyxcYeWaXBEteV0KR+XPAhUSNx5shN5AHvaTC3ap3jmR2yfrn07+VEkV/oRBLrja6ZuZxa8u0asj5YVKAv2bcYY9DuzX7pR6dmoc28xVX2gwdJT+J3zIwiDdG0TEWSXqZn4kmzCE5KIJMfxt2VnBkHQCxxInaiplkUNHIulnz1P1mvgfmn2+hcyAnUlyjyeFyHrmAq7esfk83ZhfVyHPclQlieEE2PddwgHKKGQ7QbYgzt2k91c0O+Gjn2snHx3MJszrDyulPDvhY3NFq4EhR6xOhDBWRG+U26hZIxgF7x8O173YN7TupiiPkSpClsEDrS1M603tpr1bApll9RMTDYr+Fgdzw5T3/StdgkwTdVTYPyywB+2qaSyuC0sVtqc9D5h750vjfUZd8YaPmAmxQt2inmVJBRb2Vr8uqpnf/qseOI4SO44SK0Vy4UQ2FCO5SVYCLYzOzGfL0wl8TKZnGl/uGJ+jkpjj8KNlvWa1cQoviVn7lUjp2pc7tYJe5O8CKvvq5w7i9GtDgOx9TiuEZJVadHbJ/UCwjp234cpMPAUKfKo/zluBgXUpMqvdThj9ccrJBpJCS3/lcEBxbK/rmgmhMkxxFoU0hnDY="
+jdk:
+  - oraclejdk8
+
+addons:
+  sonarqube:
+    organization: sonarqubegeekshubs
+    token:
+      secure: "F00VrK67q8V2a+3AoJXXv+OWxJE/PQCI0eocNR4wK0UqQ2OpNavLRA30re8YjMYfVdSiYA6s4DEMGcEHMWCAHFNg3HL0x/bo7lJ9Kk8mbjoQeHwTtGNuHPjcgLNcG911wJz3XpYRelS9rV/5pOEi9mIMs4aqnZwSxe+oPD4ZSuHSHFQ1kIaGeVTqJN26kTT10fKoMbP0moUY2pEt8QlUfWDVK+xOvLWcr0xLBF/bS/pk0dyOjfW8/SQRbt9qhF0VOv1rxbDFOFCDiriezKpD0AnnhLr/gwlTrnbTSo09ajDSmO8Lf0Kmd+o48HcJwechxw7HjwaDKs7j0kIeQdu6W4XJfrKsz8IlGThb3Q8gaDcC2+cG5V4glhW4hFQhZ7o7VXMb/Nu1D9hQqRdMvCV0Y1DnG37rQT0t6ODP7O0rw6Ce4th0ZB0m+1LqK6+PJaurFCxtPJVXPTIT8+QXZM1bheJ6j+ESl5Te8MtrCl+xjwedL/PwFS8Qso5vhT1UPFhyp5QIpWmmHkd2/Et034r+fzG0Ri97H1ucn+3TORHkpvMaHD6oOFI5Vbr92kVIFN00bn+WJbo4461ohZVU90LwicMkZmd1Nkvnq837Lri6qn9yzWLBRCcvBLsqKtRlsXW1mNzB0defquQqkDaLEp8AygzBadcsCBbXPMXkDFkux+s="
+    github_token:
+      secure: "z2qkZNsAp1ZAyhJr8EBQ2IyOsIf/nRdcIY/PL3OeLP5k1vCmyYNOxSYKaSFY+IJV3LfwdlUwj+/Q0PaZzZRzQ+v/joYmhhKF+LWQi40Ht4Qxq3rWdZEaG7U5NqOq7hwKDtTu2LiKVHTY9HADUYkDOn3GEFcL9ZKD/DoYVbGgDabRF37i5ohsEeaUmnBMAVMyUDsHJo12llt1TXbYrvLSXjzLqn6TXG6gCSTJyF3Js8B24mhkwoMX28ikMN+qDncAXRN97Grp/4PDz3+oUuJAycPkMF0aQ0ZnWztivWQkvqG9Vn9tFwlMKXwLST92e10wdmdfh6UcCs90eXlrAR4SraEuopsqc9uRRUsbzWKw5cvUVT2yvFG8eI7d8UFG/vLLcTSZYBpj/ygBXUNMuWByKVm3NtfY7znbkI4A0GYnBlE7+c1YyC7N7qrwSOmCKQz7PDzyfBHIkVi4tKYqfTdiQENMqnzw14vSspfTkzr73CUoh2xp+awpbBM3bl48Fu/sB5XU3CsC7xQmvMvIIExGj6XMwdC3CNoyucMxqNdJO4XeZcePxpGIJjTeJjehoLrqWlW3CJMnR53Rn5CKbL8n9F19QnVQygKMK18DrNgTBmhs9k+0OxFZof4gEDECJ7fvA0ItIlP6P5G+hrYlqmmrnRH1QRekLaNUh2UtN8OwfTA="
+    branches:
+      - .*
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -f java-custom-rules/pom.xml
 
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+  - "$HOME/.m2/repository"
+  - "$HOME/.sonar/cache"
 
 notifications:
   email: false
-  webhooks:
-    urls:
-      - secure: "Rfoalk7uP2jMXD6P1xOG6z6J5AmK3/GeqIh9k2nMQFeCAMuxuv8Kv3ZWQ5lyz2ueP9fW37/JXWamsS31KVCzBbyAVx3hK0mZ9PpjvVnJ2B//jhwuYk/Zh4CluiWhN9vVOxcq5+IXcUi08+olKR0Bh3NY6ZqRQ/EmuWZ11JcgtjHCTqcBu4HLEdmxbYzzATNezYt3Yj98UDm9OUK8tOCbAPM0GCTJHbqp0SOS56G1prOSdFxnegOZktA8Ui3kTNSB7pyC1nXk7wqvsZLN5U/0UQ06OD76CaSVxWQPMOYczXrGJZ5KyOEkjFzV5sGfSdx7uaOPKBetS0Y4d2rsiNZxPyo47/cV04nk7jaAYoBVHBdTSlli++JDJimEQ1a6UikUNR4VQvTFuAWN4V7QAKYvfAA/cconba7thaq6LCOsJMA1Z92uMPsX7XMzu7gIT6kBi6AejF2nmLWruoEWswM2WWYQBqmMeZUX1zSabEdvhhKa/b8gaET/KOUHp/9pThaIJ8+CyN+cyvYbfiKybsEiVMlJ6XPwmOd6jyC7A9czWVKToo1fg4OGnD3L7yjD/Mep+uYR7nkckz7i+1WU+kR1PPut+GzWdoxqXMS3izdvig61TnjnlaV3C7rCUs7ZiSulbcpSNgYDmMTzKMBmS4SzxZLt7nYFxHplNAgjppCcUBY="
-    on_start: always
