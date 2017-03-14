@@ -46,6 +46,7 @@ public final class RulesList {
       .add(MyCustomSubscriptionRule.class)
       .add(SecurityAnnotationMandatoryRule.class)
       .add(AvoidSwitchCheck.class)
+      .add(AvoidMaskedSwitchCheck.class)
       .build();
   }
 
