@@ -4,10 +4,15 @@
  **/
 
 class AvoidSwitchCheck {
-    void foo() {
-        switch (1) { // Noncompliant
-            case 1:
-                break;
-        }
+  double getSpeed() {
+    switch (_type) { // Noncompliant
+      case EUROPEAN:
+        return getBaseSpeed();
+      case AFRICAN:
+        return getBaseSpeed() - getLoadFactor() * _numberOfCoconuts;
+      case NORWEGIAN_BLUE:
+        return (_isNailed) ? 0 : getBaseSpeed(_voltage);
     }
+    throw new RuntimeException ("Should be unreachable");
+  }
 }
