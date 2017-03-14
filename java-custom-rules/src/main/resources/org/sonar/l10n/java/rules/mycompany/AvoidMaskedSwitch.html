@@ -1,0 +1,27 @@
+<p>You have a conditional that chooses different behavior depending on the type of an object.</p>
+
+<h2>Noncompliant Code Example</h2>
+
+<pre>
+double getSpeed() {
+    if (value == EUROPEAN) {
+      return getBaseSpeed();
+    } else if (value == AFRICAN) { // Noncompliant
+      return getBaseSpeed() - getLoadFactor() * _numberOfCoconuts;
+    } else if (value == NORWEGIAN_BLUE) { // Noncompliant
+      return (_isNailed) ? 0 : getBaseSpeed(_voltage);
+    } else {
+      throw new RuntimeException ("Should be unreachable");
+    }
+}
+</pre>
+
+<h2>Compliant Solution</h2>
+
+<p>Move each leg of the conditional to an overriding method in a subclass. Make the original method abstract.</p>
+
+<ul>
+    <li><a href="http://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html">Replace Conditional with
+        Polymorphism</a> - Fowler Refactoring Catalog
+    </li>
+</ul>
